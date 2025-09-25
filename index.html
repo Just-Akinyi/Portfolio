@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justin Akinyi</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<body>
+  <div class="container">
+    <!-- Your content here ... -->
+    
+    <!-- Contact Section with form and social links -->
+    <section id="contact" class="contact-section">
+      <h1 class="section-title autoDisplay">Let's talk😊</h1>
+      <div class="social-box autoBlur">
+        <a href="#"><i class='bx bxs-phone'></i> +254 704 494 504</a>
+        <a href="#"><i class='bx bxl-linkedin-square'></i> https://www.linkedin.com/in/justin-akinyi/</a>
+        <div class="social-icons">
+          <a href="#"><i class='bx bxl-youtube'></i></a>
+          <a href="#"><i class='bx bxl-twitter'></i></a>
+          <a href="#"><i class='bx bxl-facebook-circle'></i></a>
+        </div>
+      </div>
+
+      <div class="contact-box autoBlur">
+        <p>Whether you're looking to build a new website or app, improve your existing platform, or bring a unique project to life, I'm here to help.</p>
+      
+        <form action="https://formspree.io/f/xyznzgrn" method="POST">
+          <p>Full Name</p>
+          <input name="name" placeholder="Your Full Name" type="text" required>
+
+          <p>Email Address</p>
+          <input name="email" placeholder="Your Email" type="email" required>
+
+          <p>Your Message</p>
+          <input name="message" class="input-message" placeholder="Share..." required>
+
+          <button type="submit">
+            Send Message <i class='bx bx-mail-send'></i>
+          </button>
+        </form>
+      </div>
+    </section> 
+
+    <!-- Footer -->
+    <section class="footer">
+      <h6>©️2025, Made with ❤️ by Justin</h6>
+      <div class="box-icons">
+        <p><a href="https://youtube.com" target="_blank"><i class='bx bxl-youtube'></i></a></p>
+        <p><a href="https://github.com/Just-Akinyi" target="_blank"><i class='bx bxl-github'></i></a></p>
+        <p><a href="https://www.linkedin.com/in/justin-akinyi/" target="_blank"><i class='bx bxl-linkedin-square'></i></a></p>
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <!-- Device and Country Detection -->
+  <script>
+    // Detect Device Type
+    const userAgent = navigator.userAgent;
+    const deviceType = /Mobi|Android|iPhone/i.test(userAgent) ? 'Mobile' : 'Desktop';
+
+    // Get Country Info using IPinfo API
+    fetch('https://ipinfo.io/json?token=d4a1176a17d1db')
+      .then(response => response.json())
+      .then(data => {
+        const country = data.country;
+        console.log('Device:', deviceType);
+        console.log('Country:', country);
+
+        // Send device and country info to your backend
+        fetch('/.netlify/functions/sendInfo', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ device: deviceType, country: country })
+        })
+        .then(response => response.json())
+        .then(data => console.log('Email sent successfully!'))
+        .catch(error => console.error('Error:', error));
+      })
+      .catch(error => console.error('Error fetching country info:', error));
+  </script>
+</body>
+</html>
+
