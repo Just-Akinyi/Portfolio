@@ -75,7 +75,7 @@
         console.log('Country:', country);
 
         // Send device and country info to your backend
-        fetch('/.netlify/functions/sendInfo', {
+        fetch('https://justinakinyi.netlify.app/.netlify/functions/sendInfo', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -90,4 +90,3 @@
   </script>
 </body>
 </html>
-
