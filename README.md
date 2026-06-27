@@ -49,7 +49,7 @@ I've built projects ranging from education platforms and booking systems to frau
 ### Tech Talk Hub
 A complete education platform featuring student dashboards, tutor portals, parent tracking, automated assessments, booking systems, curriculum management, and analytics.
 
-**Tech:** React, Next.js, Supabase, PostgreSQL
+**Tech:** Flutter (Mobile), React & Next.js (Web), Supabase, PostgreSQL, Tailwind CSS
 
 ---
 
